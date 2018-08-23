@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace务必和对应接口的全类名一致 -->
+<mapper namespace="com.xdf.dao.UserMapper">
+    <!--查询-->
+    <select id="login" parameterType="Users" resultType="Users">
+          SELECT id,userName,password from user
+          <where>
+              userName=#{userName} and password=#{password}
+          </where>
+    </select>
+
+    <select id="getTotalCounts" resultType="int">
+        select count(id) from USER
+    </select>
+
+    <select id="findAllUsersByPage" resultType="Users">
+        select id,userName,password from USER
+        limit #{0},#{1}
+    </select>
+
+</mapper>
